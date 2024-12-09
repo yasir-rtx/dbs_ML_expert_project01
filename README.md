@@ -112,3 +112,6 @@ Berdasarkan tabel di atas dapat dilihat bahwa model yang dibangun menggunakan al
 2. Eksplorasi Semua Kombinasi: Grid search akan mencoba setiap kombinasi dari nilai hyperparameter yang telah ditentukan. Untuk algoritma random forest memiliki 1296 kombinasi.
 
 3. Pilih Kombinasi Terbaik: Kombinasi hyperparameter yang menghasilkan performa terbaik pada validasi silang dipilih sebagai kombinasi optimal. Model final kemudian dibangun menggunakan hyperparameter tersebut. Berikut parameter terbaik untuk algoritma random forest: {'bootstrap': False, 'criterion': 'gini', 'max_depth': 20, 'min_samples_leaf': 2, 'min_samples_split': 5, 'n_estimators': 600}
+
+Berikut hasil optimisasi dari algoritma random forest. Terdapat peningkatan peforma tapi tidak terlalu besar.
+![image](https://github.com/yasir-rtx/dbs_ML_expert_project01/blob/main/img/opt.png)
