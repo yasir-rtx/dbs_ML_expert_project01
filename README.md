@@ -87,7 +87,7 @@ Standarisasi adalah teknik praproses data dalam machine learning yang mengubah f
 Pada tahap ini akan dibangun lima model AI yang menggunakan algoritma yang berbeda-beda untuk kemudian ditentukan model mana yang memiliki performa terbaik terhadap data. Algoritma-algoritma tersebut adalah Logistic Regression, Support Vector Machine, Random Forest, Gradient Boosting, dan K-Nearest Neighbours. Semua algoritma akan dilatih menggunakan parameter default dari library scikit-learn. Kemudian performa akan diukur dari precision, recall, f1-score dan accuracy menggunakan fungsi classification_report dari library scikit-learn.
 
 1. Logistic Regression: Logistic Regression merupakan model dasar yang dapat digunakan untuk klasifikasi multi-kelas. Walaupun sederhana, algoritma ini seringkali memberikan hasil yang cukup baik sebagai baseline. Berikut hasil pelatihan:
-   ![image](logistic.png)
+   ![image](https://github.com/yasir-rtx/dbs_ML_expert_project01/blob/main/img/logistic.png)
 2. Random Forest: Random Forest adalah algoritma ensemble yang kuat, yang menggabungkan banyak pohon keputusan untuk meningkatkan akurasi prediksi dan mengurangi overfitting. Berikut hasil pelatihan:
    ![image](rf.png)
 3. Gradient Boosting: Gradient Boosting adalah teknik ensemble yang menggunakan pendekatan boosting untuk meningkatkan performa model dengan membangun serangkaian model yang memperbaiki kesalahan model sebelumnya. Berikut hasil pelatihan:
@@ -99,8 +99,8 @@ Pada tahap ini akan dibangun lima model AI yang menggunakan algoritma yang berbe
 
 ### Evaluasi Model
 
-    ![image](models.png)
-    Tabel 2. Akurasi dari Setiap Model
+![image](models.png)
+Tabel 2. Akurasi dari Setiap Model
 
 Berdasarkan tabel di atas dapat dilihat bahwa model yang dibangun menggunakan algoritma Random Forest dan Gradient Boosting memiliki peforma terbaik. Langkah selanjutnya kita akan melakukan pengoptimalan hyperparameter dengan metode Grid Search. Grid search adalah metode pencarian hyperparameter yang sistematis dan ekstensif yang digunakan dalam pelatihan model machine learning. Tujuan utama grid search adalah untuk menemukan kombinasi optimal dari hyperparameter yang dapat meningkatkan performa model secara signifikan. Hyperparameter adalah parameter yang tidak dipelajari dari data, melainkan ditentukan sebelum proses pelatihan.
 
