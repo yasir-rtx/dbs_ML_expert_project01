@@ -60,3 +60,57 @@ Informasi lebih lanjut dapat dilihat di [Air Quality and Pollution Assessment](h
   ![image](./img/heatmap.png)
   Gambar 2. Diagram Heatmap
   Berdasarkan diagram heatmap pada Gambar 2, semua fitur memiliki korelasi positif dengan variabel target (air quality) kecuali variabel proximity to indrustial area
+- Outliers
+  ![image](./img/outliers.png)
+  Gambar 3. Diagram Boxplot
+
+## Data Preparation
+
+### Seleksi Fitur
+
+Karena semua fitur memiliki korelasi yang tinggi atau setidaknya sedang, maka semua fitur akan digunakan untuk pelatihan. Fitur-fitur tersebut adalah suhu, kelembaban, konsentrasi PM2.5, konsentrasi PM10, konsentrasi NO2, konsentrasi SO2, konsentrasi CO, jarak dan kepadatan penduduk.
+
+### Menangani Outliers
+
+Berdasarkan diagram boxplot sebelumnya dapat dilihat bahwa dataset memiliki outliers. Outliers sendiri adalah sampel yang nilainya sangat jauh dari cakupan umum data utama. Ia adalah hasil pengamatan yang kemunculannya sangat jarang dan berbeda dari data hasil pengamatan lainnya. Pada proyek kali ini, akan digunakan teknik IQR method untuk mengatasi outliers. IQR adalah singkatan dari Inter Quartile Range. Setelah dilakukan pembersihan outliers, jumlah data pada dataset berkurang menjadi 4407.
+
+### Pembagian dataset
+
+Dataset akan dibagi menjadi data latih dan data uji. Data latih digunakan untuk melatih model, sedangkan data uji digunakan untuk menguji kinerja model pada data yang belum pernah dilihat sebelumnya. Dalam proyek ini, data latih akan memiliki ukuran 80% dari dataset dan untuk data latih sebesar 20% dari dataset. Data akan dibagi menggunakan fungsi train_test_split dari library scikit-learn. Jumlah total dataset adalah 5000 data, sehingga data latih akan berjumlah 3525 dan data uji berjumlah 882.
+
+### Standarisasi
+
+Standarisasi adalah teknik praproses data dalam machine learning yang mengubah fitur-fitur dalam dataset sehingga memiliki distribusi dengan rata-rata 0 dan standar deviasi 1. Ini dilakukan untuk memastikan bahwa setiap fitur memiliki skala yang sama. Proses standarisasi membantu meningkatkan konvergensi algoritma machine learning dan performa model dengan mengurangi bias yang disebabkan oleh skala fitur yang berbeda.
+
+# Modelling
+
+Pada tahap ini akan dibangun lima model AI yang menggunakan algoritma yang berbeda-beda untuk kemudian ditentukan model mana yang memiliki performa terbaik terhadap data. Algoritma-algoritma tersebut adalah Logistic Regression, Support Vector Machine, Random Forest, Gradient Boosting, dan K-Nearest Neighbours. Semua algoritma akan dilatih menggunakan parameter default dari library scikit-learn. Kemudian performa akan diukur dari precision, recall, f1-score dan accuracy menggunakan fungsi classification_report dari library scikit-learn.
+
+1. Logistic Regression: Logistic Regression merupakan model dasar yang dapat digunakan untuk klasifikasi multi-kelas. Walaupun sederhana, algoritma ini seringkali memberikan hasil yang cukup baik sebagai baseline. Berikut hasil pelatihan:
+   ![image](logistic.png)
+2. Random Forest: Random Forest adalah algoritma ensemble yang kuat, yang menggabungkan banyak pohon keputusan untuk meningkatkan akurasi prediksi dan mengurangi overfitting. Berikut hasil pelatihan:
+   ![image](rf.png)
+3. Gradient Boosting: Gradient Boosting adalah teknik ensemble yang menggunakan pendekatan boosting untuk meningkatkan performa model dengan membangun serangkaian model yang memperbaiki kesalahan model sebelumnya. Berikut hasil pelatihan:
+   ![image](boosting.png)
+4. Support Vector Machine: SVM adalah algoritma klasifikasi yang menemukan hyperplane optimal untuk memisahkan kelas-kelas yang berbeda. Ini bisa efektif untuk dataset dengan kelas yang terdefinisi jelas. Berikut hasil pelatihan:
+   ![image](svm.png)
+5. K-Nearest Neighbors: KNN adalah algoritma sederhana yang mengklasifikasikan data berdasarkan kedekatan dengan contoh pelatihan dalam ruang fitur. Berikut hasil pelatihan:
+   ![image](knn.png)
+
+### Evaluasi Model
+
+    ![image](models.png)
+    Tabel 2. Akurasi dari Setiap Model
+
+Berdasarkan tabel di atas dapat dilihat bahwa model yang dibangun menggunakan algoritma Random Forest dan Gradient Boosting memiliki peforma terbaik. Langkah selanjutnya kita akan melakukan pengoptimalan hyperparameter dengan metode Grid Search. Grid search adalah metode pencarian hyperparameter yang sistematis dan ekstensif yang digunakan dalam pelatihan model machine learning. Tujuan utama grid search adalah untuk menemukan kombinasi optimal dari hyperparameter yang dapat meningkatkan performa model secara signifikan. Hyperparameter adalah parameter yang tidak dipelajari dari data, melainkan ditentukan sebelum proses pelatihan.
+
+### Tahapan Grid Search:
+
+1. Definisikan Ruang Hyperparameter: Tentukan range atau set nilai hyperparameter yang ingin diuji.
+   Berikut cakupan parameter untuk algoritma random forest : - n_estimators: [200, 400, 600], - criterion: ['gini', 'entropy', 'log_loss'], - max_depth: [10, 20, 30, None], - bootstrap: [True, False], - min_sample_leaf: [1, 2, 4], - min_sample_split: [2, 5, 10]
+   Sementara cakupan parameter untuk Gradient Boosting sebagai berikut:
+   -s
+
+2. Eksplorasi Semua Kombinasi: Grid search akan mencoba setiap kombinasi dari nilai hyperparameter yang telah ditentukan. Untuk algoritma random forest memiliki 486 kombinasi, sementara algoritma gradient boosting memiliki
+
+3. Pilih Kombinasi Terbaik: Kombinasi hyperparameter yang menghasilkan performa terbaik pada validasi silang dipilih sebagai kombinasi optimal. Model final kemudian dibangun menggunakan hyperparameter tersebut.
