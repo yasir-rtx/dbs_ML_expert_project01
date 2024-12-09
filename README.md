@@ -2,59 +2,61 @@
 
 ## Domain Proyek
 
-Perkembangan teknologi dan pengetahuan manusia tentang antariksa telah mendorong peningkatan perhatian terhadap studi ilmiah mengenai Near Earth Objects (NEOs) dalam beberapa dekade terakhir. NEOs adalah komet dan asteroid yang orbitnya membawa mereka mendekati orbit bumi. Keberadaan NEOs ini penting untuk dipelajari karena mereka memiliki potensi untuk membahayakan bumi jika orbitnya mengarah pada tabrakan, yang bisa menyebabkan bencana besar.
-Penelitian terkait NEOs sangat penting untuk memprediksi potensi ancaman dari setiap komet dan asteroid yang mendekati bumi. Dengan pemahaman yang lebih baik, langkah-langkah mitigasi dapat direncanakan untuk mengurangi risiko yang ditimbulkan. Proyek ini bertujuan untuk menerapkan algoritma machine learning guna mengkategorikan NEOs berdasarkan potensi bahayanya terhadap bumi, dengan mengeksplorasi pola-pola yang ada dalam dataset NEOs.
-Mengapa masalah ini harus diselesaikan :
-
-- Keamanan Global: NEOs yang berpotensi bertabrakan dengan bumi dapat menyebabkan kerusakan besar
-- Pengetahuan Ilmiah: Memahami karakteristik dan perilaku NEOs membantu memperluas pengetahuan kita tentang tata surya
-- Persiapan dan Mitigasi: Dengan melacak NEOs lebih dini, kita dapat merencanakan langkah-langkah mitigasi yang tepat
-
-Bagaimana masalah ini harus diselesaikan:
-
-- Pengumpulan data: Pengumpulan data dapat dilakukan melalui pengamatan menggunakan teleskop canggih untu mengumpulkan data terkait NEOs
-- Analisis data dengan machine learning : Menggunakan algoritma machine learning untuk menemukan pola-pola dan karakteristik dari NEOs yang memiliki potensi bahaya sehingga dapat dilakukan indentifikasi atau prediksi pada komet dan asteroid yang berada di dekat bumi
-
-Referensi:
-
-- NASA Nearest Earth Object Classification Using Quantum Machine Learning: A Survey (https://link.springer.com/chapter/10.1007/978-981-99-8289-9_34)
-- Predicting Satellite Close Approaches Using Statistical Parameters In The Context Of Artificial Intelligence (https://ntrs.nasa.gov/api/citations/20190029019/downloads/20190029019.pdf)
+Kualitas udara yang buruk telah menjadi salah satu isu lingkungan paling mendesak di banyak kota besar di seluruh dunia, termasuk di Indonesia. Polusi udara memiliki dampak signifikan terhadap kesehatan manusia, ekosistem, dan perubahan iklim. Dataset "Air Quality and Pollution Assessment" dari Kaggle menyediakan data yang berharga mengenai berbagai parameter polusi udara, seperti konsentrasi PM2.5, PM10, NO2, SO2, CO, serta faktor lingkungan lainnya seperti suhu, kelembaban, dan kepadatan penduduk. Dengan menganalisis data ini, kita dapat mengembangkan model prediktif yang dapat memproyeksikan kualitas udara berdasarkan faktor-faktor tersebut, yang berguna untuk perencanaan kota dan kebijakan lingkungan.
+Untuk membuat model prediktif kualitas udara, beberapa algoritma machine learning yang akan diterapkan untuk kemudian dilihat algoritma mana yang memiliki performa terbaik terhadap data. Algoritma Logistic Regression digunakan sebagai baseline karena kesederhanaannya dan kemampuannya dalam menangani masalah klasifikasi multi-kelas. Selanjutnya, algoritma Random Forest dan Gradient Boosting diterapkan untuk meningkatkan akurasi prediksi dengan memanfaatkan pendekatan ensemble yang menangkap interaksi kompleks antar fitur. Selain itu, Support Vector Machine (SVM) diterapkan untuk menemukan hyperplane optimal yang memisahkan kategori kualitas udara yang berbeda. Evaluasi menunjukkan bahwa model ensemble, khususnya Random Forest dan Gradient Boosting, memberikan performa terbaik dalam memprediksi kualitas udara, menjadikannya pilihan utama untuk implementasi lebih lanjut.
 
 ## Business Understanding
 
 ### Problem Statements
 
-1. Identifikasi dan Klasifikasi Ancaman NEOs: Saat ini, tidak ada sistem otomatis yang dapat mengklasifikasikan Near Earth Objects (NEOs) secara efisien berdasarkan potensi ancaman mereka terhadap bumi. Hal ini menghambat kemampuan kita untuk mengambil tindakan pencegahan yang tepat waktu dan efektif.
-2. Pola dan Karakteristik NEOs: Kurangnya pemahaman mendalam mengenai pola dan karakteristik NEOs dalam dataset yang tersedia membuat prediksi mengenai perilaku dan dampak potensial NEOs terhadap bumi menjadi sulit dan tidak akurat.
-3. Pengolahan Data NEOs yang Efisien: Proses analisis data NEOs yang ada saat ini masih manual dan memakan waktu, sehingga membutuhkan solusi yang lebih efisien melalui penerapan teknologi machine learning untuk analisis dan prediksi yang lebih cepat dan akurat.
+1. Kualitas udara yang buruk telah menjadi ancaman kesehatan yang serius di seluruh dunia termasuk Indonesia. Bagaimana ancaman ini dapat diatasi?
+2. Bagaimana cara menentukan faktor-faktor yang mempengaruhi kualitas udara guna dapat digunakan dalam model yang akan dibangun?
 
 ### Goals
 
-1. Mengembangkan Model Klasifikasi NEOs: Menerapkan algoritma machine learning untuk mengembangkan model yang dapat mengklasifikasikan NEOs berdasarkan potensi ancamannya terhadap bumi. Model ini bertujuan untuk mengidentifikasi objek yang memerlukan perhatian segera.
-2. Mengeksplorasi Pola dalam Dataset NEOs: Melakukan analisis mendalam terhadap dataset NEOs untuk menemukan pola dan karakteristik yang dapat membantu dalam prediksi perilaku dan dampak NEOs. Hasil analisis ini akan meningkatkan pemahaman kita tentang NEOs dan membantu dalam pengambilan keputusan yang lebih baik.
-3. Meningkatkan Efisiensi Pengolahan Data NEOs: Mengimplementasikan teknologi machine learning untuk meningkatkan efisiensi pengolahan data NEOs, sehingga proses analisis menjadi lebih cepat dan akurat. Dengan demikian, kita dapat memantau dan memprediksi ancaman NEOs secara real-time dan lebih efektif.
+1. Mengembangkan model prediktif yang akurat untuk memproyeksikan kualitas udara berdasarkan berbagai parameter lingkungan dan polusi.
+2. Menganalisis faktor-faktor utama yang berkontribusi terhadap kualitas udara dan memahami pola-pola polusi udara.
+
+### Solution Statement
+
+1. Penggunaan berbagai algoritma untuk memprediksi kualitas udara
+   Melatih model dengan menggunakan berbagai algoritma guna mencari algoritma mana yang memiliki peforma terbaik untuk diimplemntasikan dengan melihat laporan klasifikasinya berupa recall, precision, dan f1-score. Algoritma yang akan digunakan adalah Logistic Regression, Support Vector Machine, Random Forest, Gradient Boosting, dan K-Nearest Neighbours.
+2. Pengoptimalan model dengan hyperparameter
+   Setelah semua model dilatih, maka akan dipilih algoritma dengan peforma terbaik guna dilakukan pengoptimalan hyperparameter untuk peningkatan akurasi.
 
 ## Data Understanding
 
-Dataset "NASA Nearest Earth Objects" yang digunakan pada proyek ini adalah kumpulan data dari NASA yang mencakup informasi mengenai benda-benda langit yang mendekati orbit bumi, seperti asteroid dan komet. Dataset ini diunduh dari kaggle melalui link berikut : https://www.kaggle.com/datasets/sameepvani/nasa-nearest-earth-objects
+Dataset ini berfokus pada kualitas penilaian kualitas udara di berbagai wilayah. Dataset ini berisi 50000 sampel dan menangkap faktor lingkungan dan demografis kritis yang memengaruhi tingkat polusi.
+Informasi lebih lanjut dapat dilihat di [Air Quality and Pollution Assessment](https://www.kaggle.com/datasets/mujtabamatin/air-quality-and-pollution-assessment).
 
-### Variabel pada NEOs:
+### Fitur-fitur Utama:
 
-1. id: Identifier unik untuk setiap entri NEO di dataset.
-2. name: Nama atau identifikasi lain dari NEO.
-3. absolute_magnitude: Magnitudo absolut NEO yang menunjukkan kecerahan intrinsik objek. Biasanya berhubungan dengan ukuran atau diameter NEO.
-4. estimated_diameter_min: Estimasi diameter minimum NEO dalam kilometer.
-5. estimated_diameter_max: Estimasi diameter maksimum NEO dalam kilometer.
-6. is_potentially_hazardous_asteroid: Indikator apakah NEO dianggap berpotensi berbahaya. Nilai boolean (true/false).
-7. close_approach_date: Tanggal ketika NEO berada pada jarak terdekatnya dengan bumi.
-8. epoch_date_close_approach: Tanggal dalam format epoch untuk pendekatan terdekat.
-9. relative_velocity_kms: Kecepatan relatif NEO terhadap bumi dalam kilometer per detik pada saat pendekatan terdekat.
-10. miss_distance_km: Jarak terdekat antara NEO dan bumi dalam kilometer pada saat pendekatan terdekat.
-11. orbiting_body: Benda langit yang mengorbit bersama NEO, biasanya bumi.
-12. sentry_object: Indikator apakah NEO masuk dalam daftar pengawasan Sentry (sistem pemantau NEO NASA). Nilai boolean (true/false).
+1. Suhu (°C): Rata-rata suhu wilayah.
+2. Kelembaban (%): Kelembaban relatif yang direkam di wilayah tersebut.
+3. Konsentrasi PM2.5 (µg/m³): Tingkat partikel halus.
+4. Konsentrasi PM10 (µg/m³): Tingkat partikel kasar.
+5. Konsentrasi NO2 (ppb): Tingkat nitrogen dioksida.
+6. Konsentrasi SO2 (ppb): Tingkat sulfur dioksida.
+7. Konsentrasi CO (ppm): Tingkat karbon monoksida.
+8. Jarak dari Area Industri (km): Jarak terdekat ke zona industri.
+9. Kepadatan Penduduk (orang/km²): Jumlah orang per kilometer persegi di wilayah tersebut.
 
-## Data Preparation
+### Variabel Target: Tingkat Kualitas Udara
 
-## Modeling
+1. Baik: Udara bersih dengan tingkat polusi rendah.
+2. Sedang: Kualitas udara yang dapat diterima tetapi dengan beberapa polutan.
+3. Buruk: Polusi yang terlihat dan mungkin menyebabkan masalah kesehatan bagi kelompok sensitif.
+4. Berbahaya: Udara yang sangat terkontaminasi yang menimbulkan risiko kesehatan serius bagi populasi.
 
-## Evaluation
+### Eksplorasi Data Analysis (EDA)
+
+- Ringkasan deskriptif:
+  ![image](https://github.com/yasir-rtx/dbs_ML_expert_project01/blob/main/img/deskriptif.png)
+  Tabel 1. Deskripsi Statistik
+- Korelasi antar fitur menggunakan paiplot
+  ![image](./img/pairplot.png)
+  Gambar 1. Diagram pairplot
+- Korelasi antar fitur menggunakan heatmap
+  ![image](./img/heatmap.png)
+  Gambar 2. Diagram Heatmap
+  Berdasarkan diagram heatmap pada Gambar 2, semua fitur memiliki korelasi positif dengan variabel target (air quality) kecuali variabel proximity to indrustial area
