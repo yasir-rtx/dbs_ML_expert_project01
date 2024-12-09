@@ -89,28 +89,26 @@ Pada tahap ini akan dibangun lima model AI yang menggunakan algoritma yang berbe
 1. Logistic Regression: Logistic Regression merupakan model dasar yang dapat digunakan untuk klasifikasi multi-kelas. Walaupun sederhana, algoritma ini seringkali memberikan hasil yang cukup baik sebagai baseline. Berikut hasil pelatihan:
    ![image](https://github.com/yasir-rtx/dbs_ML_expert_project01/blob/main/img/logistic.png)
 2. Random Forest: Random Forest adalah algoritma ensemble yang kuat, yang menggabungkan banyak pohon keputusan untuk meningkatkan akurasi prediksi dan mengurangi overfitting. Berikut hasil pelatihan:
-   ![image](rf.png)
+   ![image](https://github.com/yasir-rtx/dbs_ML_expert_project01/blob/main/img/rf.png)
 3. Gradient Boosting: Gradient Boosting adalah teknik ensemble yang menggunakan pendekatan boosting untuk meningkatkan performa model dengan membangun serangkaian model yang memperbaiki kesalahan model sebelumnya. Berikut hasil pelatihan:
-   ![image](boosting.png)
+   ![image](https://github.com/yasir-rtx/dbs_ML_expert_project01/blob/main/img/boosting.png)
 4. Support Vector Machine: SVM adalah algoritma klasifikasi yang menemukan hyperplane optimal untuk memisahkan kelas-kelas yang berbeda. Ini bisa efektif untuk dataset dengan kelas yang terdefinisi jelas. Berikut hasil pelatihan:
-   ![image](svm.png)
+   ![image](https://github.com/yasir-rtx/dbs_ML_expert_project01/blob/main/img/svm.png)
 5. K-Nearest Neighbors: KNN adalah algoritma sederhana yang mengklasifikasikan data berdasarkan kedekatan dengan contoh pelatihan dalam ruang fitur. Berikut hasil pelatihan:
-   ![image](knn.png)
+   ![image](https://github.com/yasir-rtx/dbs_ML_expert_project01/blob/main/img/knn.png)
 
 ### Evaluasi Model
 
-![image](models.png)
+![image](https://github.com/yasir-rtx/dbs_ML_expert_project01/blob/main/img/models.png)
 Tabel 2. Akurasi dari Setiap Model
 
-Berdasarkan tabel di atas dapat dilihat bahwa model yang dibangun menggunakan algoritma Random Forest dan Gradient Boosting memiliki peforma terbaik. Langkah selanjutnya kita akan melakukan pengoptimalan hyperparameter dengan metode Grid Search. Grid search adalah metode pencarian hyperparameter yang sistematis dan ekstensif yang digunakan dalam pelatihan model machine learning. Tujuan utama grid search adalah untuk menemukan kombinasi optimal dari hyperparameter yang dapat meningkatkan performa model secara signifikan. Hyperparameter adalah parameter yang tidak dipelajari dari data, melainkan ditentukan sebelum proses pelatihan.
+Berdasarkan tabel di atas dapat dilihat bahwa model yang dibangun menggunakan algoritma Random Forest memiliki peforma terbaik. Langkah selanjutnya kita akan melakukan pengoptimalan hyperparameter dengan metode Grid Search. Grid search adalah metode pencarian hyperparameter yang sistematis dan ekstensif yang digunakan dalam pelatihan model machine learning. Tujuan utama grid search adalah untuk menemukan kombinasi optimal dari hyperparameter yang dapat meningkatkan performa model secara signifikan. Hyperparameter adalah parameter yang tidak dipelajari dari data, melainkan ditentukan sebelum proses pelatihan.
 
 ### Tahapan Grid Search:
 
 1. Definisikan Ruang Hyperparameter: Tentukan range atau set nilai hyperparameter yang ingin diuji.
    Berikut cakupan parameter untuk algoritma random forest : - n_estimators: [200, 400, 600], - criterion: ['gini', 'entropy', 'log_loss'], - max_depth: [10, 20, 30, None], - bootstrap: [True, False], - min_sample_leaf: [1, 2, 4], - min_sample_split: [2, 5, 10]
-   Sementara cakupan parameter untuk Gradient Boosting sebagai berikut:
-   -s
 
-2. Eksplorasi Semua Kombinasi: Grid search akan mencoba setiap kombinasi dari nilai hyperparameter yang telah ditentukan. Untuk algoritma random forest memiliki 486 kombinasi, sementara algoritma gradient boosting memiliki
+2. Eksplorasi Semua Kombinasi: Grid search akan mencoba setiap kombinasi dari nilai hyperparameter yang telah ditentukan. Untuk algoritma random forest memiliki 1296 kombinasi.
 
-3. Pilih Kombinasi Terbaik: Kombinasi hyperparameter yang menghasilkan performa terbaik pada validasi silang dipilih sebagai kombinasi optimal. Model final kemudian dibangun menggunakan hyperparameter tersebut.
+3. Pilih Kombinasi Terbaik: Kombinasi hyperparameter yang menghasilkan performa terbaik pada validasi silang dipilih sebagai kombinasi optimal. Model final kemudian dibangun menggunakan hyperparameter tersebut. Berikut parameter terbaik untuk algoritma random forest: {'bootstrap': False, 'criterion': 'gini', 'max_depth': 20, 'min_samples_leaf': 2, 'min_samples_split': 5, 'n_estimators': 600}
