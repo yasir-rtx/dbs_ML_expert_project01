@@ -211,47 +211,50 @@ Setelah semua model dilatih, langkah selanjutnya adalah membandingkan performa d
    3. f1-score : rata-rata harmonis dari precision dan recall
    4. accuracy : proporsi dari semua prediksi yang benar (baik positif maupun negatif) dari keseluruhan sampel
 
-![models](https://github.com/user-attachments/assets/23890f6c-fca6-4971-b619-69529b82bdea)
+![models](https://github.com/user-attachments/assets/2081e750-27bc-4b88-a2d1-b15a71e74be2)
+
 
 Tabel 2. Performa dari Semua Model 
 
-Berdasarkan tabel di atas dapat dilihat bahwa model yang dibangun menggunakan algoritma Random Forest memiliki peforma terbaik. Langkah selanjutnya kita akan melakukan pengoptimalan hyperparameter dengan metode Grid Search. 
+Berdasarkan tabel di atas dapat dilihat bahwa model yang dibangun menggunakan algoritma Logistic Regression memiliki peforma terbaik. Langkah selanjutnya kita akan melakukan pengoptimalan hyperparameter dengan metode Grid Search. 
 Grid search adalah metode pencarian hyperparameter yang sistematis dan ekstensif yang digunakan dalam pelatihan model machine learning. Tujuan utama grid search adalah untuk menemukan kombinasi optimal dari hyperparameter yang dapat meningkatkan performa model secara signifikan. Hyperparameter adalah parameter yang tidak dipelajari dari data, melainkan ditentukan sebelum proses pelatihan.
 
 ### Tahapan Grid Search:
 
 1. Definisikan Ruang Hyperparameter: Tentukan range atau set nilai hyperparameter yang ingin diuji.
-   Berikut cakupan parameter untuk algoritma random forest :
-   - n_estimators: [200, 400, 600],
-   - criterion: ['gini', 'entropy', 'log_loss'],
-   - max_depth: [10, 20, 30, None],
-   - bootstrap: [True, False],
-   - min_sample_leaf: [1, 2, 4],
-   - min_sample_split: [2, 5, 10]
+   Berikut cakupan parameter untuk algoritma logistic regression :
+    - 'penalty': ['l1', 'l2', 'elasticnet', 'none'],
+    - 'C': [1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0],
+    - 'max_iter': [100, 200, 300],
+    - 'tol': [1e-4, 1e-5, 1e-6, 1e-7],
+    - 'fit_intercept': [True, False],
+    - 'class_weight': [None, 'balanced'],
+    - 'solver': ['lbfgs', 'liblinear', 'newton-cg', 'newton-cholesky', 'sag', 'saga']
 
-2. Eksplorasi Semua Kombinasi: Grid search akan mencoba setiap kombinasi dari nilai hyperparameter yang telah ditentukan. Untuk algoritma random forest memiliki 1296 kombinasi.
+2. Eksplorasi Semua Kombinasi: Grid search akan mencoba setiap kombinasi dari nilai hyperparameter yang telah ditentukan. Untuk algoritma random forest memiliki 20736 kombinasi.
 
 3. Pilih Kombinasi Terbaik: Kombinasi hyperparameter yang menghasilkan performa terbaik pada validasi silang dipilih sebagai kombinasi optimal. Model final kemudian dibangun menggunakan hyperparameter tersebut.
-Berikut parameter terbaik untuk algoritma random forest:
-	* 'bootstrap': False,
-	* 'criterion': 'gini',
-	* 'max_depth': 20,
-	* 'min_samples_leaf': 2,
-	* 'min_samples_split': 5,
-	* 'n_estimators': 600
+Berikut parameter terbaik untuk algoritma logistic regression:
+	* 'C': 3.0,
+	* 'class_weight': None,
+	* 'fit_intercept': True,
+	* 'max_iter': 100,
+	* 'penalty': 'l2',
+	* 'solver': 'saga',
+	* 'tol': 0.0001
 
 Kemudian model terbaik akan diuji kembali dengan data uji untuk melihat performanya. Berikut adalah hasil pengujian terhadap model terbaik bersama dengan performa awal model agar dapat dilihat perbedaanya:
 
-![opt](https://github.com/user-attachments/assets/b8a2944d-becb-476a-8edd-870210a3602c)
+![opt](https://github.com/user-attachments/assets/9f6e7438-69bf-49bb-b4ea-701e16fcea29)
 
-Tabel 3. Performa Model Random Forest sebelum dan sesudah optimisasi
+Tabel 3. Performa Model Logistic Regression sebelum dan sesudah optimisasi
 
-Dari tabel di atas dapat dilihat terjadi kenaikan performa meski tidak terlalu besar.
+Dari tabel di atas dapat dilihat terjadi peningkatan akurasi lebih kurang 1% untuk setiap metrik evaluasi.
 
 ## Kesimpulan
 
 ### Problem Statements Answers
-Problem statement pertama adalah bagaimana cara mengatasi kualitas udara yang buruk? Solusi yang ditawarkan proyek ini adalah dengan mengembangkan sebuah model machine learning yang mampu memproyeksikan kualitas udara di suatu wilayah dengan parameter-parameter yang telah ditentukan. Model yang dihasilkan dari proyek ini memiliki akurasi yang tinggi dengan angka 96%. Jika model ini diterapkan dalam upaya penanggulangan kualitas udara, model akan menentikan kualitas udara di suatu wilayah kemudian pihak yang berwenang dapat membuat tindakan yang tepat berdasarkan kualitas udara di wilayah tersebut.
+Problem statement pertama adalah bagaimana cara mengatasi kualitas udara yang buruk? Solusi yang ditawarkan proyek ini adalah dengan mengembangkan sebuah model machine learning yang mampu memproyeksikan kualitas udara di suatu wilayah dengan parameter-parameter yang telah ditentukan. Model yang dihasilkan dari proyek ini memiliki akurasi yang tinggi dengan angka 95.12%. Jika model ini diterapkan dalam upaya penanggulangan kualitas udara, model akan menentikan kualitas udara di suatu wilayah kemudian pihak yang berwenang dapat membuat tindakan yang tepat berdasarkan kualitas udara di wilayah tersebut.
 
 Kemudian problem statement kedua adalah bagaimana cara menentukan faktor-faktor yang mempengaruhi kualitas udara? Hal ini tentu dapat dilakukan dengan melakukan penelitian ilmiah untuk mencari polutan apa saja yang menyebabkan kualitas udara menurun. Beruntungnya sudah banyak jurnal ilmiah yang membahas masalah ini. Analisa statistik terhadap dataset juga dapat dilakukan untuk mendapatkan jawaban dari pertanyaan ini. Dengan menggunakan diagram pairplot dan heatmap didapat bahwa PM2.5, PM10, NO2, SO2, dan CO merupakan faktor-faktor utama yang menyebabkan kualitas udara di suatu wilayah memburuk.
 
@@ -261,7 +264,7 @@ Tujuan proyek ini adalah menganalisa faktor-faktor yang berkontribusi terhadap k
    * Polutan utama: PM2.5, PM10, NO2, SO2, dan CO merupakan polutan utama yang berdampak signifikan terhadap kualitas udara
    * Industri dan Polusi: Kedekatan dengan area industri adalah faktor yang penting dalam menurunkan kualitas udara
    * Cuaca dan Polusi: Faktor cuaca seperti suhu dan kelembapan juga memiliki pengaruh, meskipun kompleksitas hubungan ini memerlukan analisis lebih lanjut.
-2. Berdasarkan laporan performa menggunakan classification report pada algoritma random forest yang telah dioptimisasi hyperparamter-nya didapat model machine learning yang kampu memproyeksikan kualitas udara berdasarkan parameter suhu, kelembaban, konsentrasi PM2.5, konsentrasi PM10, konsentrasi NO2, konsentrasi SO2, konsentrasi CO, jarak dan kepadatan penduduk dengan akurasi sebesar 96%, precision sebesar 94.37%, recall sebesar 93.89% dan f1-score sebesar 94.11%.
+2. Berdasarkan laporan performa menggunakan classification report pada algoritma logistic regression yang telah dioptimisasi hyperparamter-nya didapat model machine learning yang kampu memproyeksikan kualitas udara berdasarkan parameter suhu, kelembaban, konsentrasi PM2.5, konsentrasi PM10, konsentrasi NO2, konsentrasi SO2, konsentrasi CO, jarak dan kepadatan penduduk dengan akurasi sebesar 95.12%, precision sebesar 89%, recall sebesar 88.87% dan f1-score sebesar 88.98%.
 
 ### Dampak Penelitian
-Solution statement yang ditawarkan pada proyek ini adalah dengan melatih berbagai algoritma machine learning untuk menemukan algoritma dengan peforma terbaik. Model terbaik kemudian akan dioptimisasi hyperparameternya untuk lebih meningkatkan akurasi prediksi. Algoritma dengan performa terbaik adalah Random Forest dengan akurasi sebesar 96%. Jika model ini diterapkan dalam upaya penanggulangan kualitas udara tentu akan memberi dampak yang sangat besar. Karena model ini dapat menentukan kualitas udara di suatu wilayah dengan sangat baik sehingga pemerintah dapat mengambil tindakan yang tepat untuk mengatasinya. Regulasi juga dapat dibuat dan diterapkan berdasarkan hasil proyeksi dari model. Namun, tentu hasil dari model ini perlu diawasi oleh tenaga ahli di bidangnya untuk memastikan pengambilan tindakan yang tepat.
+Solution statement yang ditawarkan pada proyek ini adalah dengan melatih berbagai algoritma machine learning untuk menemukan algoritma dengan peforma terbaik. Model terbaik kemudian akan dioptimisasi hyperparameternya untuk lebih meningkatkan akurasi prediksi. Algoritma dengan performa terbaik adalah Random Forest dengan akurasi sebesar 95.12%. Jika model ini diterapkan dalam upaya penanggulangan kualitas udara tentu akan memberi dampak yang sangat besar. Karena model ini dapat menentukan kualitas udara di suatu wilayah dengan sangat baik sehingga pemerintah dapat mengambil tindakan yang tepat untuk mengatasinya. Regulasi juga dapat dibuat dan diterapkan berdasarkan hasil proyeksi dari model. Namun, tentu hasil dari model ini perlu diawasi oleh tenaga ahli di bidangnya untuk memastikan pengambilan tindakan yang tepat.
